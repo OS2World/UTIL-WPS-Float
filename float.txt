@@ -1,0 +1,75 @@
+float version 1.0 (05/02/93) - a simple utility to keep windows floating
+
+This tiny utility keeps a window floating on top of others.  One float
+process keeps one window floating (you can run as many float processes
+as you like).
+
+
+To float a window,
+
+    1) open the window to be floated and make it showing on screen;
+
+    2) type the following in a command prompt:
+
+        float interval-in-ms partial-taskname
+
+    where:
+
+        interval-in-ms: floating action interval in milliseconds.
+
+            The shorter this interval is, the more frequently the window
+            is moved to the top, but the process takes away more CPU time.
+            1000 (once a second) usually works well.
+ 
+        partial-taskname: the name of the window that is in the task list.
+
+            This doesn't have to be the exact name; the program finds the
+            first matching one (e.g., "System Cl" usually works for "System
+            Clock").
+
+            Not only running programs but Workplace Shell views also (usually)
+            appear in the task list, so you can have floating folder views
+            (which sort of become 'tool bars'), too.
+
+            Note also that, if you know the window handle of any frame window
+            (no matter whether it is in the task list or not), you can float
+            it by using the following format as the partial-taskname argument:
+
+                "0xHHHHHHHH"    for hexadecimal entry (e.g., "0x3012Ab32")
+                "0DDDDDDDD"     for decimal entry (e.g., "010925644")
+
+
+    To make it look nicer, use 'start' as follows:
+
+        start "floating OS/2 System" /MIN /PGM float 1000 "OS/2 System"
+
+    This will start 'float' process minimized, and also shows the process
+    in the task list as "floating OS/2 System" (this is handy when you have
+    many float processes).
+ 
+    3) to stop floating, kill the float process by hitting ctrl-C.
+
+
+Under virtual desktop programs like CVS (by Carrick von Schoultz), floating
+windows keep their positions on screen.
+
+The program is compiled with IBM C Set/2, but I don't think I am using
+anything specific to IBM C (except maybe the compile option; this is
+compiled without C runtime code to make it smaller).
+
+
+This program is freeware; feel free to modify the source to suit your needs.
+
+Questions or suggestions are always welcome, although I may not have time
+to do much improvement myself for a while.
+
+
+                                                    Makoto Nagata
+
+                                                    555 California Street
+                                                    San Francisco, CA 94104
+
+                                                    (415) 622-0389
+
+                                                    mnagata@crl.com
+
